@@ -13,11 +13,13 @@ from django.db.models import Avg, Count, Min, Sum
 
 from reservar.models import (
   Habitacion,
-  Cliente
+  Cliente,
+  Reserva
 )
 from .serializers import (
   HabitacionSerializer,
-  ClienteSerializer
+  ClienteSerializer,
+  ReservaSerializer
 )
 
 class ListaHabitacion(APIView):
@@ -31,3 +33,10 @@ class ListaCliente(APIView):
     cliente = Cliente.objects.all()[:20]
     data = ClienteSerializer(cliente, many=True).data
     return Response(data)
+
+class ListaReserva(APIView):    
+  #LISTA TODOS LOS REGISTROS
+  def get(self, request, format=None):
+    snippets = Reserva.objects.all().order_by('-id_reserva')
+    serializer = ReservaSerializer(snippets, many=True)
+    return Response(serializer.data)

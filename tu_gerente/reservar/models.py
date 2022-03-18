@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 class Habitacion(models.Model):
@@ -75,3 +76,54 @@ class Cliente(models.Model):
     return self.id_cliente
   class Meta:
     verbose_name_plural = ("Clientes")
+
+
+class Reserva(models.Model):
+  ESTADO = (
+    ('Pendiente','Pendiente'),
+    ('Pagado','Pagado'),
+    ('Eliminado','Eliminado')
+  )
+  id_reserva = models.AutoField(
+    primary_key=True,
+    verbose_name="Id Reserva"
+  )
+  id_habitacion = models.ForeignKey(
+    Habitacion,
+    on_delete=models.CASCADE,
+    verbose_name="Habitacion",   
+  )
+  id_cliente = models.ForeignKey(
+    Cliente,
+    on_delete=models.CASCADE,
+    verbose_name="Cliente",   
+  )
+  fecha_entrada= models.DateField(
+    default=datetime.date.today,
+    verbose_name="Fecha de Entrada",
+  )
+  fecha_salida = models.DateField(
+    verbose_name="Fecha de Salida",
+    null=True,
+    blank = True,
+  )
+  dias_estadia = models.IntegerField(
+    verbose_name="dias estadia",
+    null = True
+  )
+  precio_total = models.DecimalField(
+    max_digits=10,
+    decimal_places=3,
+    verbose_name="precio_total"
+  )
+  estado = models.CharField(
+    max_length = 30, 
+    choices = ESTADO, 
+    default = 'Pendiente',
+    verbose_name="Estado"
+  )
+  class Meta:
+    verbose_name = ("Receta")
+    verbose_name_plural = ("Reservas")
+  def __int__(self):
+    return self.id_receta
