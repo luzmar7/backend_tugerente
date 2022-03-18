@@ -127,3 +127,52 @@ class Reserva(models.Model):
     verbose_name_plural = ("Reservas")
   def __int__(self):
     return self.id_receta
+
+
+class Modo_Pago(models.Model):
+  id_modo_pago = models.AutoField(
+    primary_key=True,
+    verbose_name="Id Modo Pago"
+  )
+  nombre = models.CharField(
+    verbose_name="nombre",
+    max_length= 30
+  )
+  detalles = models.CharField(
+    verbose_name="detalles",
+    max_length= 30
+  )
+  def __int__(self):
+    return self.id_modo_pago
+  class Meta:
+    verbose_name_plural = ("Modo_Pago")
+    
+
+class Factura(models.Model):
+  id_factura = models.AutoField(
+    primary_key=True,
+    verbose_name="Id Factura"
+  )
+  id_cliente = models.ForeignKey(
+    Cliente,
+    on_delete=models.CASCADE,
+    verbose_name="Cliente",   
+  )
+  id_reserva = models.ForeignKey(
+    Reserva,
+    on_delete=models.CASCADE,
+    verbose_name="Reserva",   
+  )
+  id_modo_pago = models.ForeignKey(
+    Modo_Pago,
+    on_delete=models.CASCADE,
+    verbose_name="modo_pago",   
+  )
+  fecha= models.DateField(
+    default=datetime.date.today,
+    verbose_name="Fecha de Entrada",
+  )
+  def __int__(self):
+    return self.id_factura
+  class Meta:
+    verbose_name_plural = ("Facturas")

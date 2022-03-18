@@ -5,7 +5,9 @@ from django.contrib import admin
 from reservar.models import (
   Habitacion,
   Cliente,
-  Reserva
+  Reserva,
+  Modo_Pago,
+  Factura
 )
 
 @admin.register(Habitacion)
@@ -19,3 +21,12 @@ class ClienteAdmin(admin.ModelAdmin):
 @admin.register(Reserva)
 class ReservaAdmin(admin.ModelAdmin):
   list_display = ["id_reserva", "id_habitacion", "id_cliente", "fecha_entrada","fecha_salida","dias_estadia", "precio_total", "estado"]
+
+@admin.register(Modo_Pago)
+class Modo_PagoAdmin(admin.ModelAdmin):
+  list_display = ["id_modo_pago", "nombre", "detalles"]
+
+@admin.register(Factura)
+class FacturaAdmin(admin.ModelAdmin):
+  list_display = ["id_factura", "id_cliente", "id_reserva", "id_modo_pago", "fecha"]
+
