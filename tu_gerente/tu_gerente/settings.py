@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recetar', #linea agregada
+    'reservar', #linea agregada
     'rest_framework' #linea agregada
 ]
 

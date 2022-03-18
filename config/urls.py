@@ -15,7 +15,7 @@ urlpatterns = [
     # User management
     path("users/", include("backend_tugerente.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    path('farmacia/recetar/', include("recetar.api.urls", namespace="api-recetar")),
+    # path('farmacia/reservar/', include("reservar.api.urls", namespace="api-reservar")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
