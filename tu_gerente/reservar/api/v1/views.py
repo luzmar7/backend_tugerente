@@ -14,13 +14,18 @@ from django.db.models import Avg, Count, Min, Sum
 from reservar.models import (
   Habitacion,
   Cliente,
-  Reserva
+  Reserva,
+  Modo_Pago,
+  Factura
 )
 from .serializers import (
   HabitacionSerializer,
   ClienteSerializer,
   ReservaSerializer,
-  ReservaSerializerG
+  ReservaSerializerG,
+  ModoPagoSerializer,
+  FacturaSerializer,
+  FacturaSerializerG
 )
 
 #--------- Cliente ---------#
@@ -182,3 +187,113 @@ class ReservaEliminar(APIView):
     snippet.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
 #--------- End Reserva ---------#
+
+
+#--------- Modo_Pago ---------#
+class ListaModoPago(APIView):    
+  #LISTA TODOS LOS REGISTROS
+  def get(self, request, format=None):
+    snippets = Modo_Pago.objects.all().order_by('-id_modo_pago')
+    serializer = ModoPagoSerializer(snippets, many=True)
+    return Response(serializer.data)
+
+class ModoPagoGuardar(APIView):
+  def get(self, request, format=None):
+    snippets = Modo_Pago.objects.all()
+    serializer = ModoPagoSerializer(snippets, many=True)
+    return Response(serializer.data)
+  def post(self, request, format=None):
+    serializer = ModoPagoSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ModoPagoEditar(APIView):
+  def get_object(self, pk):
+    try:
+      return Modo_Pago.objects.get(id_modo_pago=pk)
+    except Modo_Pago.DoesNotExist:
+      raise Http404
+  def get(self, request, pk, format=None):
+    snippet = self.get_object(pk)
+    serializer = ModoPagoSerializer(snippet)
+    return Response(serializer.data)
+  def put(self, request, pk, format=None):
+    snippet = self.get_object(pk)
+    serializer = ModoPagoSerializer(snippet, data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ModoPagoEliminar(APIView):
+  def get_object(self, pk):
+    try:
+      return Modo_Pago.objects.get(id_modo_pago=pk)
+    except Modo_Pago.DoesNotExist:
+      raise Http404
+  def get(self, request, pk, format=None):
+    snippet = self.get_object(pk)
+    serializer = ModoPagoSerializer(snippet)
+    return Response(serializer.data)
+  def delete(self, request, pk, format=None):
+    snippet = self.get_object(pk)
+    snippet.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+#--------- End ModoPago ---------#
+
+#--------- Factura ---------#
+class ListaFactura(APIView):    
+  #LISTA TODOS LOS REGISTROS
+  def get(self, request, format=None):
+    snippets = Factura.objects.all().order_by('-id_modo_pago')
+    serializer = FacturaSerializer(snippets, many=True)
+    return Response(serializer.data)
+
+class FacturaGuardar(APIView):
+  def get(self, request, format=None):
+    snippets = Factura.objects.all()
+    serializer = FacturaSerializerG(snippets, many=True)
+    return Response(serializer.data)
+  def post(self, request, format=None):
+    serializer = FacturaSerializerG(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class FacturaEditar(APIView):
+  def get_object(self, pk):
+    try:
+      return Factura.objects.get(id_factura=pk)
+    except Factura.DoesNotExist:
+      raise Http404
+  def get(self, request, pk, format=None):
+    snippet = self.get_object(pk)
+    serializer = FacturaSerializerG(snippet)
+    return Response(serializer.data)
+  def put(self, request, pk, format=None):
+    snippet = self.get_object(pk)
+    serializer = FacturaSerializerG(snippet, data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class FacturaEliminar(APIView):
+  def get_object(self, pk):
+    try:
+      return Factura.objects.get(id_factura=pk)
+    except Factura.DoesNotExist:
+      raise Http404
+  def get(self, request, pk, format=None):
+    snippet = self.get_object(pk)
+    serializer = FacturaSerializerG(snippet)
+    return Response(serializer.data)
+  def delete(self, request, pk, format=None):
+    snippet = self.get_object(pk)
+    snippet.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+#--------- End Factura ---------#
+

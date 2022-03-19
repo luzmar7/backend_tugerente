@@ -16,6 +16,16 @@ from .views import (
   ReservaGuardar,
   ReservaEditar,
   ReservaEliminar,
+
+  ListaModoPago,
+  ModoPagoGuardar,
+  ModoPagoEditar,
+  ModoPagoEliminar,
+
+  ListaFactura,
+  FacturaGuardar,
+  FacturaEditar,
+  FacturaEliminar
 )
 app_name = 'reservar'
 
@@ -41,6 +51,26 @@ urlpatterns = [
   path('ReservaEditar/<int:pk>/', ReservaEditar.as_view(), name="ReservaEditar"),
   path('ReservaEliminar/<int:pk>/', ReservaEliminar.as_view(), name="ReservaEliminar"),
   #--------- End Reserva ---------#
+
+  #--------- Reserva ---------#
+  path('listaReserva/', ListaReserva.as_view(), name='ListaReserva'),
+  path('ReservaGuardar/', ReservaGuardar.as_view(), name="ReservaGuardar"),
+  path('ReservaEditar/<int:pk>/', ReservaEditar.as_view(), name="ReservaEditar"),
+  path('ReservaEliminar/<int:pk>/', ReservaEliminar.as_view(), name="ReservaEliminar"),
+  #--------- End Reserva ---------#
   
+  #--------- Modo_Pago ---------#
+  path('listaModoPago/', ListaModoPago.as_view(), name='ListaModoPago'),
+  path('ModoPagoGuardar/', ModoPagoGuardar.as_view(), name="ModoPagoGuardar"),
+  path('ModoPagoEditar/<int:pk>/', ModoPagoEditar.as_view(), name="ModoPagoEditar"),
+  path('ModoPagoEliminar/<int:pk>/', ModoPagoEliminar.as_view(), name="ModoPagoEliminar"),
+  #--------- End Modo_Pago ---------#
+
+  #--------- Factura ---------#
+  path('listaFactura/', ListaFactura.as_view(), name='ListaFactura'),
+  path('FacturaGuardar/', FacturaGuardar.as_view(), name="FacturaGuardar"),
+  path('FacturaEditar/<int:pk>/', FacturaEditar.as_view(), name="FacturaEditar"),
+  path('FacturaEliminar/<int:pk>/', FacturaEliminar.as_view(), name="FacturaEliminar"),
+  #--------- End Factura ---------#
 
   ]
