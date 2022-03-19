@@ -47,6 +47,12 @@ class ClienteGuardar(APIView):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class ClienteBuscar(APIView):
+  def get(self, request, busca, format=None):
+    snippets= Cliente.objects.all().filter(numero_identificacion=busca)
+    serializer = ClienteSerializer(snippets, many=True)
+    return Response(serializer.data)
+
 class ClienteEditar(APIView):
   def get_object(self, pk):
     try:
@@ -153,6 +159,12 @@ class ReservaGuardar(APIView):
       serializer.save()
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ReservaBuscar(APIView):
+  def get(self, request, fecha, format=None):
+    snippets= Reserva.objects.filter(fecha_entrada=fecha)
+    serializer = ReservaSerializerG(snippets, many=True)
+    return Response(serializer.data)
 
 class ReservaEditar(APIView):
   def get_object(self, pk):

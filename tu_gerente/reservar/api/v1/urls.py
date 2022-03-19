@@ -6,6 +6,7 @@ from .views import (
   ClienteGuardar,
   ClienteEditar,
   ClienteEliminar,
+  ClienteBuscar,
 
   ListaHabitacion,
   HabitacionGuardar,
@@ -16,6 +17,7 @@ from .views import (
   ReservaGuardar,
   ReservaEditar,
   ReservaEliminar,
+  ReservaBuscar,
 
   ListaModoPago,
   ModoPagoGuardar,
@@ -36,6 +38,7 @@ urlpatterns = [
   path('ClienteGuardar/', ClienteGuardar.as_view(), name="ClienteGuardar"),
   path('ClienteEditar/<int:pk>/', ClienteEditar.as_view(), name="ClienteEditar"),
   path('ClienteEliminar/<int:pk>/', ClienteEliminar.as_view(), name="ClienteEliminar"),
+  path('ClienteBuscar/<str:busca>/', ClienteBuscar.as_view(), name="ClienteBuscar"),
   #--------- End Cliente ---------#
 
   #--------- Habitacion ---------#
@@ -50,6 +53,7 @@ urlpatterns = [
   path('ReservaGuardar/', ReservaGuardar.as_view(), name="ReservaGuardar"),
   path('ReservaEditar/<int:pk>/', ReservaEditar.as_view(), name="ReservaEditar"),
   path('ReservaEliminar/<int:pk>/', ReservaEliminar.as_view(), name="ReservaEliminar"),
+  path('ReservaBuscar/<str:fecha>/', ReservaBuscar.as_view(), name="ReservaBuscar"),
   #--------- End Reserva ---------#
 
   #--------- Reserva ---------#
