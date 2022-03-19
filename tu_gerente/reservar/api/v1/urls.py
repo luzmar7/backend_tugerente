@@ -55,13 +55,6 @@ urlpatterns = [
   path('ReservaEliminar/<int:pk>/', ReservaEliminar.as_view(), name="ReservaEliminar"),
   path('ReservaBuscar/<str:fecha>/', ReservaBuscar.as_view(), name="ReservaBuscar"),
   #--------- End Reserva ---------#
-
-  #--------- Reserva ---------#
-  path('listaReserva/', ListaReserva.as_view(), name='ListaReserva'),
-  path('ReservaGuardar/', ReservaGuardar.as_view(), name="ReservaGuardar"),
-  path('ReservaEditar/<int:pk>/', ReservaEditar.as_view(), name="ReservaEditar"),
-  path('ReservaEliminar/<int:pk>/', ReservaEliminar.as_view(), name="ReservaEliminar"),
-  #--------- End Reserva ---------#
   
   #--------- Modo_Pago ---------#
   path('listaModoPago/', ListaModoPago.as_view(), name='ListaModoPago'),
