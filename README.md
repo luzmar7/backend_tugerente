@@ -52,3 +52,74 @@ The following details how to deploy this application.
 ### Docker
 
 See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
+
+### EXPLICACIÓN ENDPOINTS
+La documentancion detalla de la base de datos, flujo de la reserva y los endpoints se encuentran en el archivo /backend_tugerente/tree/master/documentacion
+
+resumen de los endpoints:
+
+$ reservar/v1/listaCliente/ 
+$ lista todos los clientes del hotel
+
+reservar/v1/ClienteGuardar/ 
+$ realiza el registro de un cliente en el hotel
+
+reservar/v1/ClienteEditar/<int:pk>/ 
+$ realiza la actualizacion de los datos de un cliente del hotel
+
+reservar/v1/ClienteEliminar/<int:pk>/
+$ elimina un ciente del hotel
+
+reservar/v1/ClienteBuscar/<str:busca>/ 
+$ busca en cliente segun su numero de identificacion
+
+reservar/v1/listaHabitacion/
+$ lista todas las habitaciones del hotel
+
+reservar/v1/HabitacionGuardar/
+$ realiza el registro de una habitacion
+
+reservar/v1/HabitacionEditar/<int:pk>/
+$ realiza la actualizacion de datos de una habitacion del hotel
+
+reservar/v1/HabitacionEliminar/<int:pk>/
+$ elimina una habitacion del hotel
+
+reservar/v1/listaReserva/
+$ lista todas las reservas
+
+reservar/v1/ReservaGuardar/
+$ realiza el registro de una reserva
+
+reservar/v1/ReservaEditar/<int:pk>/
+$ realiza la actualizacion de los datos de una reserva
+
+reservar/v1/ReservaEliminar/<int:pk>/
+$ elimina una reserva del hotel
+
+reservar/v1/ReservaBuscar/<str:fecha>/
+$ busca una reserva de una determinada fecha
+
+reservar/v1/listaModoPago/
+$ lista todos los modos de pago
+
+reservar/v1/ModoPagoGuardar/
+$ realiza el registro de un modo de pago
+
+reservar/v1/ModoPagoEditar/<int:pk>/
+$ realiza la actualizacion de datos de un modo de pago
+
+reservar/v1/ModoPagoEliminar/<int:pk>/
+$ elimina un modo de pago
+
+reservar/v1/listaFactura/
+$ lista las facturas
+
+reservar/v1/FacturaGuardar/
+$ realiza el registro de una reserva
+
+reservar/v1/FacturaEditar/<int:pk>/
+$ realiza la actualizacion de datos de una factura
+
+reservar/v1/FacturaEliminar/<int:pk>/
+$ elimina el registro de una factura
