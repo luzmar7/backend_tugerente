@@ -56,7 +56,6 @@ See detailed [cookiecutter-django Docker documentation](http://cookiecutter-djan
 ### EXPLICACIÓN ENDPOINTS
 La documentancion detalla de la base de datos, flujo de la reserva y los endpoints se encuentran en el archivo /backend_tugerente/tree/master/documentacion
 
-#### Running tests with pytest
 resumen de los endpoints:
 
 reservar/v1/listaCliente/ 
