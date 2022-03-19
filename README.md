@@ -54,7 +54,7 @@ The following details how to deploy this application.
 See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
 
 ### EXPLICACIÓN ENDPOINTS
-La documentancion detalla de la base de datos, flujo de la reserva y los endpoints se encuentran en el archivo /backend_tugerente/tree/master/documentacion
+La documentanción detallada de la base de datos, flujo de la reserva y los endpoints se encuentran en el archivo /backend_tugerente/tree/master/documentacion
 
 resumen de los endpoints:
 
