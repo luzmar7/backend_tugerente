@@ -23,3 +23,8 @@ class ReservaSerializer(serializers.ModelSerializer):
   class Meta:
     model = Reserva
     fields = '__all__'
+
+class ReservaSerializerG(serializers.ModelSerializer):
+  class Meta:
+    model = Reserva
+    fields = '__all__'
